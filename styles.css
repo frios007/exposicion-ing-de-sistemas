@@ -1,23 +1,23 @@
 /* --- 1. VARIABLES & RESET --- */
 :root {
-  /* Colors */
-  --primary-blue: #0056b3; /* Main professional blue */
-  --secondary-blue: #003d80; /* Darker blue for contrast */
-  --accent-cyan: #00a8e8; /* Highlights */
-  --text-dark: #111827; /* Near black for readability */
-  --text-gray: #4b5563; /* Softer gray for body text */
+  /* Paleta de Colores */
+  --primary-blue: #0056b3;
+  --secondary-blue: #003d80;
+  --accent-cyan: #00a8e8;
+  --text-dark: #111827;
+  --text-gray: #4b5563;
   --bg-white: #ffffff;
-  --bg-light: #f3f4f6; /* Very light gray for section separation */
+  --bg-light: #f3f4f6;
 
-  /* Status Colors */
+  /* Colores de Estado */
   --danger-red: #ef4444;
   --success-green: #10b981;
 
-  /* Spacing & Borders */
+  /* Espaciado y Bordes */
   --border-radius: 12px;
   --container-width: 1200px;
 
-  /* Shadows for Depth */
+  /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -41,7 +41,7 @@ body {
   overflow-x: hidden;
 }
 
-/* --- 2. LAYOUT UTILITIES --- */
+/* --- 2. UTILIDADES DE LAYOUT --- */
 .container {
   width: 90%;
   max-width: var(--container-width);
@@ -57,12 +57,20 @@ section {
 .bg-light {
   background-color: var(--bg-light);
 }
-
 .mb-large {
   margin-bottom: 4rem;
 }
+.mb-small {
+  margin-bottom: 1.5rem;
+}
+.mt-medium {
+  margin-top: 2rem;
+}
+.text-center {
+  text-align: center;
+}
 
-/* --- 3. TYPOGRAPHY --- */
+/* --- 3. TIPOGRAFÍA --- */
 h1,
 h2,
 h3,
@@ -119,7 +127,6 @@ p {
   padding: 4rem 0;
 }
 
-/* Decorative Background Pattern */
 .hero::before {
   content: "";
   position: absolute;
@@ -222,14 +229,20 @@ p {
   list-style: none;
   margin-top: 1.5rem;
 }
-
 .styled-list li {
   position: relative;
   padding-left: 2rem;
   margin-bottom: 1rem;
   color: var(--text-dark);
 }
-
+.styled-list.compact li {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.styled-list.compact li:last-child {
+  border-bottom: none;
+}
 .styled-list li i {
   position: absolute;
   left: 0;
@@ -245,12 +258,57 @@ p {
   color: var(--success-green) !important;
 }
 
-/* --- 6. PLACEHOLDERS (Visuals) --- */
+/* Etiqueta de Costo */
+.cost-tag {
+  display: inline-block;
+  background-color: #ecfdf5;
+  color: #047857;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* --- 6. GALLERY GRID (Layout 2 columnas x 3 filas) --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Móvil: 1 columna */
+  gap: 2rem; /* Espacio generoso entre imágenes */
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Estilo específico de la imagen */
+.gallery-img {
+  display: block;
+  width: 100%;
+  height: 400px; /* Altura fija GRANDE para uniformidad */
+  object-fit: cover; /* Llena el cuadro. Cambia a 'contain' si los diagramas se cortan */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  background-color: #f3f4f6; /* Fondo gris suave por si la imagen tiene transparencia */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item figcaption {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  font-size: 1rem;
+}
+
+/* --- 7. PLACEHOLDERS (Para imágenes fuera de la galería) --- */
 .visual-placeholder {
   width: 100%;
   margin: 0;
 }
-
 .placeholder-box {
   background-color: #e5e7eb;
   border: 3px dashed #9ca3af;
@@ -267,12 +325,15 @@ p {
   text-align: center;
   padding: 2rem;
 }
-
 .placeholder-box.vertical {
   min-height: 500px;
 }
 .placeholder-box.wide {
   min-height: 400px;
+}
+.placeholder-box.small {
+  min-height: 200px;
+  border-width: 2px;
 }
 
 .placeholder-box:hover {
@@ -286,6 +347,9 @@ p {
   margin-bottom: 1rem;
   opacity: 0.7;
 }
+.placeholder-box.small i {
+  font-size: 2rem;
+}
 
 figcaption {
   text-align: center;
@@ -295,14 +359,13 @@ figcaption {
   font-style: italic;
 }
 
-/* --- 7. TRILOGÍA DE HALL (Highlighted Section) --- */
+/* --- 8. TRILOGÍA DE HALL --- */
 .trilogia-section {
   background-color: var(--text-dark);
   color: white;
   padding: 6rem 0;
   position: relative;
 }
-
 .dark-header h2 {
   color: white;
 }
@@ -315,7 +378,6 @@ figcaption {
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-
 .trilogia-card {
   background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
@@ -323,12 +385,10 @@ figcaption {
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: transform 0.3s;
 }
-
 .trilogia-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.15);
 }
-
 .trilogia-card h3 {
   color: var(--accent-cyan);
   margin-bottom: 1rem;
@@ -337,15 +397,12 @@ figcaption {
   align-items: center;
   gap: 0.5rem;
 }
-
 .trilogia-card p {
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.05rem;
   font-weight: 300;
   margin: 0;
 }
-
-/* Specific border colors for Trilogy cards */
 .trilogia-card.problem {
   border-left: 5px solid var(--danger-red);
 }
@@ -356,14 +413,13 @@ figcaption {
   border-left: 5px solid var(--accent-cyan);
 }
 
-/* --- 8. STATS --- */
+/* --- 9. ESTADÍSTICAS --- */
 .stats-container {
   display: flex;
   gap: 2rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
 .stat-box {
   background: var(--bg-white);
   padding: 1.5rem;
@@ -373,7 +429,6 @@ figcaption {
   box-shadow: var(--shadow-sm);
   border: 1px solid #e5e7eb;
 }
-
 .stat-box .number {
   display: block;
   font-size: 2.5rem;
@@ -381,11 +436,9 @@ figcaption {
   color: var(--primary-blue);
   line-height: 1;
 }
-
 .stat-box.danger .number {
   color: var(--danger-red);
 }
-
 .stat-box .label {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -394,7 +447,7 @@ figcaption {
   color: var(--text-gray);
 }
 
-/* --- 9. FOOTER --- */
+/* --- 10. FOOTER --- */
 footer {
   background-color: var(--secondary-blue);
   color: white;
@@ -402,18 +455,12 @@ footer {
   padding: 3rem 0;
   font-size: 0.9rem;
 }
-
 footer p {
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
 }
 
-footer .small {
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-}
-
-/* --- 10. ANIMATIONS --- */
+/* --- 11. ANIMACIONES --- */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -424,11 +471,14 @@ footer .small {
   transform: translateY(0);
 }
 
-/* --- 11. MEDIA QUERIES --- */
+/* --- 12. MEDIA QUERIES (Responsividad) --- */
 @media (min-width: 768px) {
+  /* Layouts generales de 2 columnas */
   .grid-2 {
     grid-template-columns: 1fr 1fr;
   }
+
+  /* Hero ajustado */
   .hero h1 {
     font-size: 3.5rem;
   }
@@ -436,12 +486,20 @@ footer .small {
     flex-direction: row;
     justify-content: center;
   }
+
+  /* Trilogía ajustada a 3 columnas */
   .trilogia-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Alternating layout for variety */
+  /* Inversión para alternar texto/imagen */
   .reverse-mobile .text-content {
     order: 2;
+  }
+
+  /* GRID DE GALERÍA: 2 Columnas fijas desde Tablet en adelante */
+  /* Esto garantiza el layout de 2 columnas x 3 filas para las 6 imágenes */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

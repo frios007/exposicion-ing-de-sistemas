@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Reveal Elements on Scroll
-  // This adds the "active" class to elements with "reveal" when they scroll into view
   const revealElements = document.querySelectorAll(".reveal");
 
   const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
-    const elementVisible = 100; // Distance from bottom before revealing
+    const elementVisible = 100;
 
     revealElements.forEach((element) => {
       const elementTop = element.getBoundingClientRect().top;
@@ -16,13 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Initial check (in case user reloads halfway down page)
   revealOnScroll();
-
-  // Listen to scroll events
   window.addEventListener("scroll", revealOnScroll);
 
-  // 2. Smooth Scrolling for Anchor Links (Navigation)
+  // 2. Smooth Scrolling
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
